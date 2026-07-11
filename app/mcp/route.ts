@@ -75,39 +75,7 @@ const handler = createMcpHandler(
     server.tool("get_function_xrefs", "Get all references to a function by name.", { name: z.string(), offset, limit: limit100 }, async (a) => text(await safeGet("function_xrefs", a)));
     server.tool("list_strings", "List defined strings and their addresses.", { offset, limit: z.number().int().positive().default(2000), filter: z.string().optional() }, async (a) => text(await safeGet("strings", a)));
   },
-  {
-    capabilities: {
-      tools: {
-        list_methods: { description: "List all function names" },
-        list_classes: { description: "List namespaces and classes" },
-        decompile_function: { description: "Decompile a function by name" },
-        rename_function: { description: "Rename a function by name" },
-        rename_data: { description: "Rename a data label" },
-        list_segments: { description: "List memory segments" },
-        list_imports: { description: "List imported symbols" },
-        list_exports: { description: "List exported symbols" },
-        list_namespaces: { description: "List namespaces" },
-        list_data_items: { description: "List data labels and values" },
-        search_functions_by_name: { description: "Search functions by name" },
-        rename_variable: { description: "Rename a local variable" },
-        get_function_by_address: { description: "Get a function by address" },
-        get_current_address: { description: "Get the selected address" },
-        get_current_function: { description: "Get the selected function" },
-        list_functions: { description: "List all functions" },
-        decompile_function_by_address: { description: "Decompile a function by address" },
-        disassemble_function: { description: "Disassemble a function" },
-        set_decompiler_comment: { description: "Set a decompiler comment" },
-        set_disassembly_comment: { description: "Set a disassembly comment" },
-        rename_function_by_address: { description: "Rename a function by address" },
-        set_function_prototype: { description: "Set a function prototype" },
-        set_local_variable_type: { description: "Set a local variable type" },
-        get_xrefs_to: { description: "Get references to an address" },
-        get_xrefs_from: { description: "Get references from an address" },
-        get_function_xrefs: { description: "Get references to a function" },
-        list_strings: { description: "List defined strings" },
-      },
-    },
-  },
+  {},
   { basePath: "", verboseLogs: true, maxDuration: 60, disableSse: true },
 );
 
