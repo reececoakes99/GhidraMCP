@@ -75,7 +75,7 @@ const handler = createMcpHandler(
     server.tool("get_function_xrefs", "Get all references to a function by name.", { name: z.string(), offset, limit: limit100 }, async (a) => text(await safeGet("function_xrefs", a)));
     server.tool("list_strings", "List defined strings and their addresses.", { offset, limit: z.number().int().positive().default(2000), filter: z.string().optional() }, async (a) => text(await safeGet("strings", a)));
   },
-  undefined,
+  {},
   { basePath: "", verboseLogs: true, maxDuration: 60, disableSse: true },
 );
 
